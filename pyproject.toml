@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "discord-translate"
+version = "0.1.0"
+description = ""
+authors = ["red <red@kalab.sk>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+discord-py = { git = "https://github.com/RedKinda/discord.py", branch = "dev/userapps" }
+pytesseract = "^0.3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
