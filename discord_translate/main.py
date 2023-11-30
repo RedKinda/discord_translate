@@ -27,6 +27,7 @@ async def on_ready():
     # await bot.tree.sync()
 
 
+# TODO: make this a database
 LANGUAGE_PREFERENCES = {}
 
 
@@ -96,12 +97,12 @@ async def translate(interaction: discord.Interaction, message: discord.Message):
         resp = ""
         if has_msg_content:
             resp += f"Original message ({translated_text[tr_offset]['detected_source_language']}): `{message.content}`\n"
-            resp += f"Translated message: `{translated_text[tr_offset]['text']}`\n\n"
+            resp += f"Translated message ({preferred_language}): `{translated_text[tr_offset]['text']}`\n\n"
             tr_offset += 1
 
         if image_count:
             for i in range(image_count):
-                resp += f"Translated image {i + 1} ({translated_text[tr_offset]['detected_source_language']}): ```{translated_text[tr_offset+i]['text']}```\n"
+                resp += f"Translated image {i + 1} ({translated_text[tr_offset]['detected_source_language']}->{preferred_language}): ```{translated_text[tr_offset+i]['text']}```\n"
 
         await interaction.response.send_message(resp, ephemeral=True)
 
